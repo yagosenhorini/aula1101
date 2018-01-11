@@ -1,31 +1,62 @@
-var productInfo1 = {
-    src: '/img/camiseta.png',
-    name: 'Puma Golf Raglan Tech Polo Tee',
-    color: 'Purple',
-    price: 72,
-};
+var productInfo = [{
+        codigo: 1,
+        imagem:{
+            src: 'img/camiseta.png',
+            alt: 'Camiseta PUBG',
+            title: 'Titulo'
+        },
+        name: 'PUBG T-Shirt',
+        color: 'Red',
+        size: 'M',
+        price: 72,
+        qtd:3
+    },
+    {
+        codigo: 2,
+        imagem:{
+            src: 'img/future.png',
+            alt: 'Tênis Marty McFLy',
+            title: 'Titulo'
+        },
+        name:'Nike Marty McFLy Shoes',
+        color: 'White',
+        size: '39',
+        price: 119,
+        qtd:1
+    },
+    {   codigo: 3,
+        imagem:{
+            src: 'img/skull.png',
+            alt: 'Jaqueta caveira',
+            title: 'Titulo'
+        },
+        name:'Skull Jacket',
+        color: 'Black',
+        size: 'XL',
+        price: 89,
+        qtd: 2
+    }
+];
 
-document.getElementById("p1").innerHTML = productInfo1.name;
-document.getElementById("c1").innerHTML ='Color: '+productInfo1.color;
-document.getElementById("v1").innerHTML = '$'+productInfo1.price;
+/* <div class="product">
+><i class="fa fa-times-circle"</i>
+<img src="" alt="" class="product__img">
+<span id="p1" class="product__name"></span>
+<span id="c1" class="product__color"></span>
+<span id="s1" class="product__size"></span>
+<span id="v1" class="product__value"></span>*<input type="number" name="" id=""> = <span>$216</span>
+</div>*/
 
-
-var productInfo2 = {
-    name:'Nike Mens Running Shoes',
-    color: 'White',
-    price: 119
-};
-
-document.getElementById("p2").innerHTML = productInfo2.name;
-document.getElementById("c2").innerHTML ='Color: '+productInfo2.color;
-document.getElementById("v2").innerHTML = '$'+productInfo2.price;
-
-var productInfo3 = {
-    name:'DC Mens Axis Snowboard Jacket',
-    color: 'Blue',
-    price: 89
-};
-
-document.getElementById("p3").innerHTML = productInfo3.name;
-document.getElementById("c3").innerHTML ='Color: '+productInfo3.color;
-document.getElementById("v3").innerHTML = '$'+productInfo3.price;
+function listar(){
+    var template = '';
+    for (var i=0; i<productInfo.length;i++){
+        template += '<div class="product">';
+        template += '<img src="'+productInfo[i].imagem.src+'" class="product__img">';
+        template += '<span id="p1" class="product__name">'+productInfo[i].name+'</span>';
+        template += '<span id="c1" class="product__color">Color: '+productInfo[i].color+'</span> ';
+        template += '<span id="s1" class="product__size">Size: '+productInfo[i].size+'</span>';
+        template += '<span id="v1" class="product__value">$ '+productInfo[i].price+'</span> * <input type="number" name="" id=""> = <span>$216</span>';
+        template += '</div>';
+    }
+    document.getElementById("products").innerHTML = template;
+}
