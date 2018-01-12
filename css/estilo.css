@@ -58,3 +58,9 @@ html, body{
     height: auto;
     display: block;
 }
+
+.product__subtotal{
+    width: 100%;
+    height: 80px;
+    text-align: right;
+}

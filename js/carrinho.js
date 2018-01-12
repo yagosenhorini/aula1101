@@ -9,7 +9,7 @@ var productInfo = [{
         color: 'Red',
         size: 'M',
         price: 72,
-        qtd:3
+        qtd:3,
     },
     {
         codigo: 2,
@@ -22,7 +22,8 @@ var productInfo = [{
         color: 'White',
         size: '39',
         price: 119,
-        qtd:1
+        qtd:1,
+        
     },
     {   codigo: 3,
         imagem:{
@@ -34,8 +35,10 @@ var productInfo = [{
         color: 'Black',
         size: 'XL',
         price: 89,
-        qtd: 2
+        qtd: 2,
+       
     }
+ 
 ];
 
 /* <div class="product">
@@ -49,14 +52,25 @@ var productInfo = [{
 
 function listar(){
     var template = '';
+    var subtotalTemp = '';
+    var total = 0;
     for (var i=0; i<productInfo.length;i++){
+        var subtotal = productInfo[i].price * productInfo[i].qtd;
+        total += subtotal; 
         template += '<div class="product">';
-        template += '<img src="'+productInfo[i].imagem.src+'" class="product__img">';
+        template += '<img src="'+productInfo[i].imagem.src+'"class="product__img">';
         template += '<span id="p1" class="product__name">'+productInfo[i].name+'</span>';
         template += '<span id="c1" class="product__color">Color: '+productInfo[i].color+'</span> ';
         template += '<span id="s1" class="product__size">Size: '+productInfo[i].size+'</span>';
-        template += '<span id="v1" class="product__value">$ '+productInfo[i].price+'</span> * <input type="number" name="" id=""> = <span>$216</span>';
+        // subtotal = subtotal + this.productInfo[i].price;
+        template += '<span id="v1" class="product__value">$ '+productInfo[i].price+'</span> * <input type="number" value='+productInfo[i].qtd+' name="" id=""> = <span>$ '+subtotal+'</span>';
         template += '</div>';
     }
+    subtotalTemp += '<div class="product__subtotal"><br>';
+    subtotalTemp += '<span> Subtotal: R$'+total+'</span><br>';
+    subtotalTemp += '<span>Continue Shopping</span><br>';
+    subtotalTemp += '<button type="submit">Shipping Info</button>'
+    subtotalTemp += '</div>';
     document.getElementById("products").innerHTML = template;
+    document.getElementById("subtotal").innerHTML = subtotalTemp;
 }
