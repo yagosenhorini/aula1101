@@ -55,22 +55,38 @@ function listar(){
     var subtotalTemp = '';
     var total = 0;
     for (var i=0; i<productInfo.length;i++){
-        var subtotal = productInfo[i].price * productInfo[i].qtd;
-        total += subtotal; 
+        let subtotal = productInfo[i].price * productInfo[i].qtd;
+        let total += subtotal; 
         template += '<div class="product">';
         template += '<img src="'+productInfo[i].imagem.src+'"class="product__img">';
         template += '<span id="p1" class="product__name">'+productInfo[i].name+'</span>';
         template += '<span id="c1" class="product__color">Color: '+productInfo[i].color+'</span> ';
         template += '<span id="s1" class="product__size">Size: '+productInfo[i].size+'</span>';
         // subtotal = subtotal + this.productInfo[i].price;
-        template += '<span id="v1" class="product__value">$ '+productInfo[i].price+'</span> * <input type="number" value='+productInfo[i].qtd+' name="" id=""> = <span>$ '+subtotal+'</span>';
+        template += '<span id="v1" class="product__value">$ '+productInfo[i].price+'</span> * <input type="number" onchange="update(this.id, this.value)" value='+productInfo[i].qtd+' name="" id="'+productInfo[i].codigo+'"> = <span id="total-'+productInfo[i].codigo+'">$ '+subtotal+'</span>';
         template += '</div>';
     }
     subtotalTemp += '<div class="product__subtotal"><br>';
-    subtotalTemp += '<span> Subtotal: R$'+total+'</span><br>';
+    subtotalTemp += '<span id="total"> Subtotal: R$'+total+'</span><br>';
     subtotalTemp += '<span>Continue Shopping</span><br>';
     subtotalTemp += '<button type="submit">Shipping Info</button>'
     subtotalTemp += '</div>';
     document.getElementById("products").innerHTML = template;
     document.getElementById("subtotal").innerHTML = subtotalTemp;
+}
+
+function update(_codigo, _qtd){
+   for (let i=0; i<productInfo.length;i++){
+    //att  qtd  
+    if(productInfo[i].codigo == _codigo)
+       productInfo[i].qtd = _qtd;
+
+       //altera valor unit
+       var totalProd = productInfo[i].qtd * productInfo[i].price;
+       var codProd = 'total-'+productInfo[i].codigo;
+       document.getElementById(codProd).innerHTML="<strong>$ </strong>"+totalProd; 
+       
+        //altera valor total
+
+   }
 }
