@@ -54,9 +54,10 @@ function listar(){
     var template = '';
     var subtotalTemp = '';
     var total = 0;
+    var totalF = 0;
     for (var i=0; i<productInfo.length;i++){
         let subtotal = productInfo[i].price * productInfo[i].qtd;
-        let total += subtotal; 
+        total += subtotal; 
         template += '<div class="product">';
         template += '<img src="'+productInfo[i].imagem.src+'"class="product__img">';
         template += '<span id="p1" class="product__name">'+productInfo[i].name+'</span>';
@@ -76,6 +77,7 @@ function listar(){
 }
 
 function update(_codigo, _qtd){
+    var total = 0;
    for (let i=0; i<productInfo.length;i++){
     //att  qtd  
     if(productInfo[i].codigo == _codigo)
@@ -87,6 +89,7 @@ function update(_codigo, _qtd){
        document.getElementById(codProd).innerHTML="<strong>$ </strong>"+totalProd; 
        
         //altera valor total
-
+        total += totalProd;
+        document.getElementById("total").innerHTML="Subtotal: R$" +total;
    }
 }
