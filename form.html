@@ -14,11 +14,15 @@
         <h3>Shipping Address</h3>
         <form action="">
     <select class="inputs"  name="input_country" id="selection_country" value="Country" >
-        <option value="0"></option>
+        <option value="0">Country</option>
+        <option value="1">Afhganistan</option>
+        <option value="2">Bulgaria</option>
     </select>
     <br>
     <select class="inputs" name="input_city" id="selection_city" >
-        <option value="0"></option>
+        <option value="0">City</option>
+        <option value="1">Sei la</option>
+        <option value="2">Teste</option>
     </select>
     <br>
     <input class="inputs" type="text" name="state" id="state" placeholder="State / Region / Province" >
@@ -45,12 +49,14 @@
            
         
         <div class="shipping">
-            <input type="radio" name="s_input" id="s_input">$10 Standard
+            
+            <input type="radio" name="s_input" id="s_input">
+            <label for="s_input">$10 Standard</label>
             <br>
             <span>(2 - 3 weeks)</span>
         </div>
         <div class="shipping">
-            <input type="radio" name="u_input" id="u_input">$20 Ultraspeed
+            <input type="radio" name="u_input" id="u_input"><label for="u_input">$20 Ultraspeed</label>
             <br>
             <span>(1 week)</span>
         </div>
