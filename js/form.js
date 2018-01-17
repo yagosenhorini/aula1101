@@ -13,32 +13,33 @@ if (addressValidation() && contactValidation()){
 }
 
 function addressValidation(){
-        ret = false;
-        addressObj = {
-        country: document.getElementById("selection_country").value,
-        zip: document.getElementById("zip").value,
-        state: document.getElementById("state").value,
-        city: document.getElementById("selection_city").value,
-        ad1: document.getElementById("ad1").value,
-        ad2: document.getElementById("ad2").value
-    };
 
+ret = false;
+addressObj = {
+    country: document.getElementById("selection_country").value,
+    zip: document.getElementById("zip").value,
+    state: document.getElementById("state").value,
+    city: document.getElementById("selection_city").value,
+    ad1: document.getElementById("ad1").value,
+    ad2: document.getElementById("ad2").value
+};
 
-        if(addressObj.country=='0'){
-            return false;
-        }else if(addressObj.city=='0'){
-return false;
-        }
-         else if(addressObj.zip.trim().length==0){
-return false;
-        } else if(addressObj.state.length==0){
-return false;
-        }else if(addressObj.ad1.trim().length==0){
-return false;
-        }else if(addressObj.ad2.trim().length==0){
-return false;
-    } else{
-        return true;
+if(addressObj.country=='0'){
+    return false;
+} else if(addressObj.city=='0'){
+    return false;
+} else if(addressObj.zip.trim().length==0){
+    return false;
+} else if(addressObj.state.length==0){
+    return false;
+} else if(addressObj.ad1.trim().length==0){
+    return false;
+} else if(addressObj.ad2.trim().length==0){
+    return false;
+} else{
+    clientInfo.address = addressObj;
+    console.log(clientInfo.address);
+    return true;
     }
 }
 
@@ -62,7 +63,9 @@ if(contactObj.name.trim().length==0){
 }else if(contactObj.phone.trim().length==0){
     return false;
 } else{
-        return true;
-}
+    clientInfo.contact = contactObj;
+    console.log(clientInfo.contact)
+    return true;
+    }
 }
 
